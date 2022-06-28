@@ -9,13 +9,11 @@ function requireHTTPS(req, res, next) {
 import express from "express";
 
 const app = express();
-app.use(requireHTTPS);
+// app.use(requireHTTPS);
 app.use(express.static('dist/ruby-angular-todo-client/'));
 
 app.get('/*', function(req, res) {
     res.sendFile('index.html', {root: './dist/ruby-angular-todo-client/'});
 });
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log('server started')
-});
+app.listen(8080);

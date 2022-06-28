@@ -1,0 +1,25 @@
+mat-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 26px;
+    height: 70px;
+
+    position: relative;
+    text-align: center;
+    background-color: #3BAFDA;
+}
+
+.icon {
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    cursor: pointer;
+    font-weight: 500;
+
+
+    &-white {
+        color: #fff;
+    }
+}
