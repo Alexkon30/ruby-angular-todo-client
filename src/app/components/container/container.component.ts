@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { plainToInstance } from 'class-transformer';
 import { Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
+import { Project } from 'src/app/models/model';
 
 @Component({
   selector: 'app-container',
@@ -9,7 +11,7 @@ import { ajax } from 'rxjs/ajax';
 })
 export class ContainerComponent implements OnInit {
 
-  projects: any[] = []
+  projects: Project[] = []
   isShowModal: boolean = false;
   // constructor() {}
 
@@ -19,7 +21,7 @@ export class ContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const projects = ajax({
+    const projects = ajax<Project[]>({
       method: 'GET',
       url: 'https://murmuring-sands-47455.herokuapp.com/projects',
       headers: {
@@ -28,7 +30,8 @@ export class ContainerComponent implements OnInit {
         'Access-Control-Allow-Origin': '*'
       }
     })
-    // projects.subscribe(res => this.projects = res.response as any[])
-    projects.subscribe(res => this.projects = res.response as any[])
+    projects.subscribe(res => {
+      this.projects = plainToInstance(Project, res.response) 
+    })
   }
 }

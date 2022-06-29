@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material/material.module';
@@ -9,6 +10,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProjectComponent } from './components/project/project.component';
 import { ContainerComponent } from './components/container/container.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { ContainerComponent } from './components/container/container.component';
     BrowserModule,
     MaterialModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

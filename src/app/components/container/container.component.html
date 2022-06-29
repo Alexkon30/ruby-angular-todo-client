@@ -2,5 +2,5 @@
     <app-header (toggleModal)="toggleModal($event)"></app-header>
 
     <app-project *ngFor="let project of projects" [project]="project"></app-project>
-    <app-modal *ngIf="isShowModal" (toggleModal)="toggleModal($event)"></app-modal>
+    <app-modal *ngIf="isShowModal" (toggleModal)="toggleModal($event)" [projects]="projects"></app-modal>
 </div>

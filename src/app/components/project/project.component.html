@@ -1,4 +1,4 @@
 <mat-card>
     <mat-card-title>{{project.title}}</mat-card-title>
-    <p>{{project.id}}</p>
+    <app-todo *ngFor="let todo of project.todos" [todo]="todo"></app-todo>
 </mat-card>
