@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProjectComponent } from './components/project/project.component';
 import { ContainerComponent } from './components/container/container.component';
 
+import { ProjectService } from './services/project.service';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,9 @@ import { ContainerComponent } from './components/container/container.component';
     BrowserModule,
     MaterialModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

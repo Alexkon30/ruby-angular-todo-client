@@ -2,7 +2,7 @@
     <mat-card class="modal">
         <mat-card-title class="todo_title">Новая задача</mat-card-title>
         <mat-card-content>
-            <form [formGroup]="reactiveForm" class="todo_form">
+            <form [formGroup]="reactiveForm" class="todo_form" (ngSubmit)="onSubmit(reactiveForm)">
                 <mat-form-field>
                     <input matInput formControlName="text" placeholder="Название задачи...">
                     <button *ngIf="isTextValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearTextValue()">

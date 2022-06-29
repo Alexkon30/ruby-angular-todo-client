@@ -51,4 +51,8 @@ export class ModalComponent implements OnInit {
     this.reactiveForm.controls['projectTitle'].setValue('')
   }
 
+  onSubmit(form: FormGroup) {
+    
+  }
+
 }

@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { plainToInstance } from 'class-transformer';
-import { Observable } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { Project } from 'src/app/models/model';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-container',
@@ -13,7 +13,9 @@ export class ContainerComponent implements OnInit {
 
   projects: Project[] = []
   isShowModal: boolean = false;
-  // constructor() {}
+  constructor(public projectService: ProjectService) {
+    this.projects = projectService.getProjects()
+  }
 
   toggleModal(isShow: boolean): void {
     // console.log('toggle')
@@ -31,7 +33,7 @@ export class ContainerComponent implements OnInit {
       }
     })
     projects.subscribe(res => {
-      this.projects = plainToInstance(Project, res.response) 
+      this.projectService.setProjects(plainToInstance(Project, res.response)) 
     })
   }
 }
