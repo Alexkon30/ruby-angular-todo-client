@@ -1,7 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { plainToClass } from 'class-transformer';
-import { ajax } from 'rxjs/ajax';
 import { Project, Todo, TodoForm } from 'src/app/models/model';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -31,15 +29,7 @@ export class ModalComponent implements OnInit {
   }
 
   get isNewProject() { 
-    return !this.reactiveForm.controls['projectId'].value
-  }
-
-  get isTextValue() {
-    return this.reactiveForm.controls['text'].value
-  }
-
-  get isProjectTitleValue() {
-    return this.reactiveForm.controls['projectTitle'].value
+    return this.reactiveForm.value.projectId == 0
   }
 
   clearTextValue() {
@@ -52,28 +42,12 @@ export class ModalComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     const body = {
-      text: form.value.text as string,
-      projectid: form.value.projectId as number,
-      title: form.value.projectTitle as string,
+      text: form.value.text,
+      projectid: form.value.projectId,
+      title: form.value.projectTitle,
     }
-
-    const newTodo = ajax<{success: boolean, project: Project, todo: Todo}>({
-      method: 'POST',
-      // url: `https://murmuring-sands-47455.herokuapp.com/todos`,
-      url: `http://localhost:3000/todos`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'Access-Control-Allow-Origin': '*'
-      },
-      body,
-    })
-    newTodo.subscribe(res => {
-      const {success, project, todo} = res.response
-      if (success) {
-        this.projectService.createTodo(project, todo)
-      }
-    })
+    this.projectService.createTodo(body)
+    this.closeModal()
   }
 
 }

@@ -1,2 +1,2 @@
-<p>{{todo.text}}</p>
-<p>{{todo.isCompleted}}</p>
+<mat-checkbox [color]="'primary'" [checked]="todo.isCompleted" (change)="changeCheckBox()"
+    [ngStyle]="todo.isCompleted ? {'text-decoration': 'line-through'} : {}">{{todo.text}}</mat-checkbox>

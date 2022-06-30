@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { plainToInstance } from 'class-transformer';
-import { ajax } from 'rxjs/ajax';
 import { Project } from 'src/app/models/model';
 import { ProjectService } from 'src/app/services/project.service';
 
@@ -16,7 +14,6 @@ export class ContainerComponent implements OnInit {
   }
 
   toggleModal(isShow: boolean): void {
-    // console.log('toggle')
     this.isShowModal = isShow;
   }
 

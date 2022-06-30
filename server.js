@@ -9,7 +9,7 @@ function requireHTTPS(req, res, next) {
 import express from "express";
 
 const app = express();
-// app.use(requireHTTPS);
+app.use(requireHTTPS);
 app.use(express.static('dist/ruby-angular-todo-client/'));
 
 app.get('/*', function(req, res) {

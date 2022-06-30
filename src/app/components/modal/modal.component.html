@@ -5,7 +5,8 @@
             <form [formGroup]="reactiveForm" class="todo_form" (ngSubmit)="onSubmit(reactiveForm)">
                 <mat-form-field>
                     <input matInput formControlName="text" placeholder="Название задачи...">
-                    <button *ngIf="isTextValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearTextValue()">
+                    <button *ngIf="reactiveForm.value.text" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="clearTextValue()">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-form-field>
@@ -22,7 +23,7 @@
 
                 <mat-form-field *ngIf="isNewProject">
                     <input matInput formControlName="projectTitle" placeholder="Название проекта...">
-                    <button *ngIf="isProjectTitleValue" matSuffix mat-icon-button aria-label="Clear"
+                    <button *ngIf="reactiveForm.value.projectTitle" matSuffix mat-icon-button aria-label="Clear"
                         (click)="clearProjectTitleValue()">
                         <mat-icon>close</mat-icon>
                     </button>

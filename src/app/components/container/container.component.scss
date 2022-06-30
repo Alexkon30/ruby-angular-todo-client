@@ -2,3 +2,11 @@
     width: 1140px;
     position: relative;
 }
+
+.grid-table {
+    display: inline-grid;
+    gap: 30px;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    margin-top: 30px;
+}
