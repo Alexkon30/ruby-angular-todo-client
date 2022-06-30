@@ -11,10 +11,8 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ContainerComponent implements OnInit {
 
-  projects: Project[] = []
   isShowModal: boolean = false;
   constructor(public projectService: ProjectService) {
-    this.projects = projectService.getProjects()
   }
 
   toggleModal(isShow: boolean): void {
@@ -23,17 +21,9 @@ export class ContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const projects = ajax<Project[]>({
-      method: 'GET',
-      url: 'https://murmuring-sands-47455.herokuapp.com/projects',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'Access-Control-Allow-Origin': '*'
-      }
-    })
-    projects.subscribe(res => {
-      this.projectService.setProjects(plainToInstance(Project, res.response)) 
-    })
+  }
+
+  get projects(): Project[] {
+    return this.projectService.getProjects()
   }
 }

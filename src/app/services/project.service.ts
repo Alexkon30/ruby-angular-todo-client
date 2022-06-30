@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Project } from '../models/model';
+import { Project, Todo } from '../models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,16 @@ export class ProjectService {
     this.projects.push(project)
   }
 
-  updateProjectTodoById(pojectId: number, todoId: number) {
+  updateProjectTodoById(pojectId: number, todoId: number, title: string) {
     
+  }
+
+  createTodo(newProject: Project, todo: Todo) {
+    const projectIndex = this.projects.findIndex(project => project.id == newProject.id)
+    if (projectIndex == -1) {
+      this.projects.push({...newProject, todos: [todo]})
+    } else {
+      this.projects[projectIndex].todos.push(todo)
+    }
   }
 }

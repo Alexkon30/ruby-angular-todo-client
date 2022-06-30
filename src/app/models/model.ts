@@ -9,3 +9,9 @@ export class Project {
     title: string;
     todos: Todo[];
 }
+
+export class TodoForm {
+    projectId: number = 0;
+    projectTitle: string = '';
+    text: string = '';
+}
